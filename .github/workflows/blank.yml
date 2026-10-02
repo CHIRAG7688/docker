@@ -1,5 +1,5 @@
 ```yaml
-name: WhatsApp Clone CI/CD
+name: Frontend and Backend CI
 
 on:
   push:
@@ -10,66 +10,52 @@ on:
     branches:
       - main
 
-
 jobs:
 
-  # ==========================================
-  # FRONTEND CI
-  # ==========================================
+  # =========================
+  # FRONTEND
+  # =========================
   frontend:
     name: Frontend CI
     runs-on: ubuntu-latest
 
     steps:
-      # Get source code from GitHub
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
 
-      # Install frontend dependencies
       - name: Install frontend dependencies
         run: npm ci
 
-      # Build Vue/Vite application
       - name: Build frontend
         run: npm run build
 
 
-  # ==========================================
-  # BACKEND CI
-  # ==========================================
+  # =========================
+  # BACKEND
+  # =========================
   backend:
     name: Backend CI
     runs-on: ubuntu-latest
 
     steps:
-      # Get source code from GitHub
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
 
-      # Install backend dependencies
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci
 
-      # Check JavaScript syntax
-      - name: Check backend syntax
+      - name: Check backend code
         working-directory: backend
         run: node --check index.js
-
-
- 
+```
