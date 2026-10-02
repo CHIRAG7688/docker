@@ -1,4 +1,3 @@
-```yaml
 name: Frontend and Backend CI
 
 on:
@@ -56,6 +55,9 @@ jobs:
         run: npm ci
 
       - name: Check backend code
+
+
+      
         working-directory: backend
         run: node --check index.js
-```
+
