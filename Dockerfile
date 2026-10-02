@@ -20,5 +20,5 @@ EXPOSE 5173 4001
 # Start both the backend API and the Vite frontend
 CMD ["sh", "-c", "cd /app/backend && node index.js & npm run dev -- --host 0.0.0.0"]
 
-# docker check to karo dev me ha  +  ji ho gya kya
+# docker check to karo dev me ha  +  ji ho gya kya ab to bhut time ho gya bhaiya 
 
